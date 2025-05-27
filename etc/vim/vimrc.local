@@ -1,0 +1,9 @@
+" Location /etc/vim/
+" {{{ .vimrc
+if filereadable("/home/katch/.config/vim/vimrc")
+  source /home/katch/.config/vim/vimrc
+endif
+" }}}
+
+" Change .viminfo file
+set viminfofile=/home/katch/.config/vim/viminfo

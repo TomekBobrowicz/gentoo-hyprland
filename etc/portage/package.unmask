@@ -1,0 +1,14 @@
+# Unmask pkgs from bentoo overlay
+www-client/brave-bin::bentoo
+# Unmask pkgs from guru overlay
+app-misc/yazi::guru
+app-shells/zsh-history-substring-search::guru
+app-shells/zsh-autosuggestions::guru
+gui-apps/hypridle::guru
+gui-apps/clipman::guru
+x11-themes/breezex-xcursors::guru
+gui-apps/fuzzel::guru
+gui-apps/hyprpaper::guru
+gui-apps/hyprlock::guru
+gui-libs/xdg-desktop-portal-hyprland::guru
+gui-apps/hyprsunset::guru

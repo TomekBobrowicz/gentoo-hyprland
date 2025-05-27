@@ -1,0 +1,16 @@
+#!/bin/bash
+# 18 Apr 2020 / katch922
+# Ryan's Tutorials - Linux Tutorials 13
+# write a script to give report about a dir
+
+AMOUNT=`ls -A $1 | wc -l`
+DIR=`ls -lA $1 | grep "^d" | wc -l`
+BIG=`ls -SAlh $1 | grep -v "^d" | head -n2 | tail -n1 | awk '{print $5,$9}'`
+NEW=`ls -tAl $1 | grep -v "^d" | awk '{print $9}' | head -n2 | tail -n1`
+OWNER=`ls -Al $1 | awk '{print $3}' | uniq`
+
+echo -e "\nThere are $AMOUNT files in $1\n"
+echo -e "$DIR directory type\n"
+echo -e "Biggest file is $BIG\n"
+echo -e "Most recent file is $NEW\n"
+echo -e "These users own files in $1:" && echo $OWNER

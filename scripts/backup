@@ -1,0 +1,28 @@
+#!/bin/bash
+# 18 Apr 2020 / katch922
+# Backup items for later delete
+
+BACKUP="$HOME/Documents/backup"
+
+# only allow one input at a time
+if [ $# != "1" ]; then
+	echo -e "\n$0 only accepts one input\n"
+	exit 1
+fi
+
+echo -e "<cp> or <mv>?"
+read CHOICE
+
+case $CHOICE in	# give option to copy/move
+	cp)
+		cp -vir $1 $BACKUP;;
+	mv)
+		mv -vi $1 $BACKUP;;
+	*)
+		exit 1;;
+esac
+
+echo -e "\nThe next 5 files to be deleted\n"
+ls -Alh $BACKUP | head -n6
+
+# Place in /usr/local/bin chmod 700

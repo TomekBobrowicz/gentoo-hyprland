@@ -1,0 +1,6 @@
+#!/bin/bash
+# Clean system with gentoo tools
+
+# for buildpkg or buildsyspkg also add "eclean-pkg -d -n"
+# clean binary packages "eclean packages"
+eclean-kernel -n 3 && eclean-dist -d -t2w -f

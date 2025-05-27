@@ -1,0 +1,4 @@
+#!/bin/sh
+# start Hyprland
+
+exec dbus-run-session Hyprland

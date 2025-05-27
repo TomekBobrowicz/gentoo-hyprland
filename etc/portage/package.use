@@ -1,0 +1,126 @@
+*/* CPU_FLAGS_X86: aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sha sse sse2 sse3 sse4_1 sse4_2 sse4a ssse3
+*/* VIDEO_CARDS: -* amdgpu radeonsi
+*/* INPUT_DEVICES: -* libinput
+# Safe Upgrade to python3_13
+*/* PYTHON_TARGETS: -* python3_13
+*/* PYTHON_SINGLE_TARGET: -* python3_13
+
+# Set PipeWire as default sound server
+media-video/pipewire dbus jack-sdk pipewire-alsa sound-server -X
+media-sound/pulseaudio -daemon
+
+# Disable features
+app-admin/sudo -sendmail -pam
+
+# Enable os-prober
+>=sys-boot/grub-2.06-r4 mount -themes
+
+# Required by firefox
+>=media-libs/libvpx-1.13.1-r1 postproc
+www-client/firefox dbus pgo -X
+
+# Required by pfl
+>=sys-apps/util-linux-2.38.1 caps
+
+# required by libreoffice
+dev-libs/xmlsec nss
+media-libs/harfbuzz icu
+app-office/libreoffice -bluetooth
+media-libs/tiff jpeg
+
+# Required by unar
+# Added PGO
+sys-devel/gcc objc pgo
+>=gnustep-base/gnustep-make-2.8.0-r1 native-exceptions
+
+# For KVM use
+# required for virt-manager to operate; use pipewire instead of pulseaudio
+app-emulation/qemu QEMU_SOFTMMU_TARGETS: aarch64 x86_64 QEMU_USER_TARGETS: x86_64
+app-emulation/qemu usbredir spice virgl opengl -pipewire
+# Recommanded flags for libvirt
+app-emulation/libvirt pcap virt-network numa fuse macvtap vepa qemu policykit
+# Required by libvirt
+>=net-dns/dnsmasq-2.89 script
+>=net-libs/gnutls-3.8.0 pkcs11 tools
+# Required for virt-manager
+>=net-misc/spice-gtk-0.41-r1 usbredir
+app-emulation/virt-manager gui
+
+# Remove netifrc
+sys-apps/openrc -netifrc
+
+# HYPRLAND
+gui-wm/hyprland -qtutils
+media-libs/libsdl2 gles2
+>=x11-libs/libdrm-2.4.120 video_cards_radeon
+dev-qt/qtgui egl jpeg
+dev-qt/qtbase cups opengl -ice -X
+dev-qt/qttools opengl
+
+# Fuzzel
+# add icon support
+gui-apps/fuzzel png svg
+
+# WAYBAR
+gui-apps/waybar experimental network pipewire wifi -upower
+x11-libs/gdk-pixbuf jpeg
+
+# seatd as a server
+sys-auth/seatd builtin server -elogind
+
+# CLAMAV
+# enable on-access scan
+#app-antivirus/clamav clamonacc
+
+# enable dracut and grub regen
+sys-kernel/installkernel dracut grub
+
+# reqired by networkmanager
+net-misc/networkmanager -bluetooth -wext
+net-wireless/wpa_supplicant dbus
+
+# required by joplin-desktop
+app-text/xmlto text
+app-crypt/gcr gtk
+
+# Remove some options
+x11-themes/arc-theme -gtk2
+
+# Fonts
+# add emoji & asian lang
+#media-fonts/fonts-meta emoji
+
+# do not harden kernel
+#sys-kernel/gentoo-kernel -hardened
+
+# Enable Profile Guided Optimization (PGO)
+app-arch/xz-utils pgo
+app-shells/bash pgo
+dev-lang/python pgo
+sys-devel/binutils pgo
+
+# Pipewire instead of pulseaudio
+media-video/mpv pipewire -pulseaudio
+
+# Remove X support for wayland native apps
+app-crypt/pinentry -X
+app-misc/fastfetch -X
+media-libs/gst-plugins-base -X
+net-libs/gtk-vnc -X
+
+# Enable udev rules for adb
+dev-util/android-tools udev
+
+# Enable NPM package manager
+net-libs/nodejs npm -snapshot
+
+# remove support for PAM
+gnome-base/gnome-keyring -pam
+
+# Thunderbird
+mail-client/thunderbird -X -rust-extensions
+
+# Java
+# Install headless, remove AWT crap
+dev-java/openjdk headless-awt
+virtual/jdk headless-awt

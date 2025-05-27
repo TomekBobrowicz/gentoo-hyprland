@@ -1,0 +1,7 @@
+# add programs to run after making changes to hyprland.conf
+
+sleep 2
+hyprctl keyword monitor HDMI-A-1,disable
+sleep 3
+# mute input device
+pactl set-source-mute alsa_output.usb-Audioengine_Ltd._Audioengine_2__ABCDEFB1180003-00.analog-stereo.monitor 1

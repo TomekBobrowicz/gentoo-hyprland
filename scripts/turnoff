@@ -1,0 +1,18 @@
+#!/bin/bash
+# 14 Nov 20 / Katch
+# (@)/turnoff
+# Shorter way to halt/reboot
+
+if [ $# = 0 ] ; then
+  echo -e "Must provide option <-p> to poweroff, <-r> to reboot, or <-R> to re-execute init."
+  exit 1
+elif [ $1 = "-p" ] ; then
+	openrc-shutdown -p now
+elif [ $1 = "-r" ] ; then
+	shutdown -r now
+elif [ $1 = "-R" ] ; then
+	openrc-shutdown -R
+else
+	echo "$1 is not an option."
+	echo "Try <-p> to poweroff, <-r> to reboot, or <-R> to re-execute init."
+fi
