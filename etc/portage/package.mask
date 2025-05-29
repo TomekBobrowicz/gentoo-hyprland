@@ -1,3 +1,4 @@
 # Hard mask the whole ebuild repo
 */*::bentoo
 */*::guru
+*/*::djs_overlay

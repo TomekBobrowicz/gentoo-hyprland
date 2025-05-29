@@ -1,5 +1,0 @@
-#!/bin/sh
-# stop XDPH before logout
-
-killall -e xdg-desktop-portal-hyprland
-killall xdg-desktop-portal

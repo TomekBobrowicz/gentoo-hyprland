@@ -1,0 +1,363 @@
+      * {
+	  font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+	  border: none;
+	  border-radius: 0px;
+      }
+      window#waybar {
+		  background-color: rgba(26,27,38,0);
+	  border-bottom: 1px solid rgba(26,27,38,0);
+	  border-radius: 0px;
+	  color: #E6B673;
+	  background: transparent;
+	  transition-property: background-color;
+	  transition-duration: .5s;
+	
+      }
+      #workspaces {
+           font-size: 14px;
+		  background: #0F1419;
+	  margin: 5px;
+	  padding: 0px 1px;
+	  border-radius: 15px;
+	  border: 0px;
+	  font-style: normal;
+	  color: #0F1419;
+	 opacity: 0.8;
+	
+      }
+      #workspaces button {
+		  padding: 0px 5px;
+	  margin: 4px 3px;
+	  border-radius: 15px;
+	  border: 0px;
+	  color: #0F1419;
+	  background: linear-gradient(45deg, #95E6CB, #59C2FF, #D2A6FF);
+	  opacity: 0.4;
+	  transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+	
+      }
+      #workspaces button.active {
+		  padding: 0px 5px;
+	  margin: 4px 3px;
+	  border-radius: 15px;
+	  border: 0px;
+	  color: #0F1419;
+	  background: linear-gradient(45deg, #59C2FF, #D2A6FF);
+	  opacity: 1.0;
+	  min-width: 40px;
+	  transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+	
+      }
+      #workspaces button:hover {
+		  border-radius: 15px;
+	  color: #0F1419;
+	  background: linear-gradient(45deg, #59C2FF, #D2A6FF);
+	  opacity: 0.7;
+	  transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+	
+      }
+      @keyframes gradient_horizontal {
+	0% {
+	  background-position: 0% 50%;
+	}
+	50% {
+	  background-position: 100% 50%;
+	}
+	100% {
+	  background-position: 0% 50%;
+	}
+      }
+      @keyframes swiping {
+        0% {
+	  background-position: 0% 200%;
+	}
+	100% {
+	  background-position: 200% 200%;
+	}
+      }
+      tooltip {
+	background: #0F1419;
+	border: 1px solid #D2A6FF;
+	border-radius: 10px;
+      }
+      tooltip label {
+	color: #F3F4F5;
+      }
+      #window {
+		  color: #E6E1CF;
+	  background: #0F1419;
+	  border-radius: 50px 15px 50px 15px;
+	  margin: 5px;
+	  padding: 2px 20px;
+	  font-size:14px;
+	  font-weight:normal;
+	  opacity:0.8;
+	
+      }
+
+	window#waybar.empty #window {
+		  background-color:transparent;
+	  }
+      #memory {
+   	color: #E6B673;
+		  background: #0F1419;
+	  border-radius: 50px 15px 50px 15px;
+	  margin: 5px;
+	  padding: 1px 15px;
+
+      }
+      #clock {
+          font-size: 14px;
+    	color: #B8CC52;
+		  background: #0F1419;
+		    opacity:0.8;
+			border-radius: 50px 15px 50px 15px;
+			margin: 3px;
+			padding: 1px 15px;
+
+      }
+      #cpu {
+    	color: #F3F4F5;
+		  background: #0F1419;
+	  border-radius: 50px 15px 50px 15px;
+	  margin: 3px;
+	  padding: 1px 15px;
+
+      }
+      #disk {
+    	color: #B8CC52;
+		  background: #0F1419;
+	  border-radius: 15px 50px 15px 50px;
+	  margin: 3px;
+	  padding: 1px 15px;
+
+      }
+     /* -----------------------------------------------------
+ * Bluetooth
+ * ----------------------------------------------------- */
+
+#bluetooth, #bluetooth.on, #bluetooth.connected {
+    background-color: #0F1419;
+    font-size: 14px;
+    background: #0F1419;
+	 font-size: 14px;
+	 color:#59C2FF;
+	 border-radius: 15px;
+	 padding: 1px 15px;
+	 margin: 5px 15px 5px 0px;
+	  opacity:0.8;
+}
+
+#bluetooth.off {
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* -----------------------------------------------------
+ * Battery
+ * ----------------------------------------------------- */
+
+#battery {
+    background-color: #0F1419;
+    font-size: 13px;
+	 background: #0F1419;
+	 font-size: 14px;
+	 color:#59C2FF;
+	 border-radius: 15px;
+	 padding: 1px 15px;
+	 margin: 5px 15px 5px 0px;
+	  opacity:0.8;
+}
+
+#battery.charging, #battery.plugged {
+    color: #59C2FF;
+    background-color: #0F1419;
+}
+/* -----------------------------------------------------
+ * Network
+ * ----------------------------------------------------- */
+
+#network {
+    background-color: #0F1419;
+	 font-size: 14px;
+	 color:#FF8F40;
+	 border-radius: 15px;
+	 padding: 1px 15px;
+	 margin: 5px 15px 5px 0px;
+	  opacity:0.8;
+}
+
+#network.ethernet {
+    background-color: #0F1419;
+    color: #FF8F40;
+}
+
+#network.wifi {
+    background-color: #0F1419;
+    color: #FF8F40;
+}
+      /* -----------------------------------------------------
+	   * Modules
+	   * ----------------------------------------------------- */
+
+	  .modules-left > widget:first-child > #workspaces {
+		  margin-left: 0;
+	  }
+
+	  .modules-right > widget:last-child > #workspaces {
+		  margin-right: 0;
+	  }
+	  /* -----------------------------------------------------
+	   * Custom Quicklinks
+	   * ----------------------------------------------------- */
+
+	  #custom-brave,
+	  #custom-browser,
+	  #custom-keybindings,
+	  #custom-outlook,
+	  #custom-filemanager,
+	  #custom-teams,
+	  #custom-chatgpt,
+	  #custom-calculator,
+	  #custom-windowsvm,
+	  #custom-cliphist,
+	  #custom-settings,
+	  #custom-wallpaper,
+	  #custom-system,
+	  #custom-hyprshade,
+	  #custom-hypridle,
+	  #custom-tools,
+	  #custom-quicklink_chromium,
+	  #custom-quicklink_edge,
+	  #custom-quicklink_firefox,
+	  #custom-quicklink_browser,
+	  #custom-quicklink_filemanager,
+	  #custom-quicklink_email,
+	  #custom-quicklink_thunderbird,
+	  #custom-quicklink_calculator,
+	  #custom-quicklink1,
+	  #custom-quicklink2,
+	  #custom-quicklink3,
+	  #custom-quicklink4,
+	  #custom-quicklink5,
+	  #custom-quicklink6,
+	  #custom-quicklink7,
+	  #custom-quicklink8,
+	  #custom-quicklink9,
+	  #custom-quicklink10,
+	  #custom-waybarthemes {
+	  margin-right: 16px;
+	  font-size: 14px;
+	  font-weight: bold;
+	  opacity: 0.8;
+	  background: #0F1419;
+	  color: #FF8F40;
+	  border-radius: 50px 15px 50px 15px;
+	  margin: 3px;
+	  padding: 1px 15px;
+	  }
+
+	  #custom-tools {
+	  margin-right:12px;
+
+	  }
+
+	  #custom-hypridle.active {
+	  color:#FF8F40;
+	  }
+
+	  #custom-hypridle.notactive {
+	  color: #dc2f2f;
+	  }
+	  #custom-ml4w-welcome {
+	  margin-right: 12px;
+	  background-image: url("../assets/ml4w-icon.svg");
+	  background: #0F1419;
+	  border-radius: 50px 15px 50px 15px;
+	  margin: 5px;
+	  padding: 1px 15px;
+	  }
+	  #custom-appmenu {
+	  background-color: transparent;
+	  font-size: 18px;
+	  color: #B8CC52;
+	  background: #0F1419;
+	  border-radius: 50px 15px 50px 15px;
+	  margin: 3px;
+	  padding: 1px 15px;
+	  }
+	  #custom-updates {
+	 background: #0F1419;
+	 font-size: 14px;
+	 color:#59C2FF;
+	 border-radius: 15px;
+	 padding: 1px 15px;
+	 margin: 5px 15px 5px 0px;
+	  opacity:0.8;
+	  }
+
+      #tray {
+    	color: #E6E1CF;
+		  background: #0F1419;
+		  border-radius: 50px 15px 50px 15px;
+		  margin: 5px;
+		  padding: 1px 15px;
+	
+      }
+      #pulseaudio {
+      font-size: 14px;
+    	color: #59C2FF;
+		  background: #0F1419;
+	  border-radius: 50px 15px 50px 15px;
+	  margin: 5px;
+	  padding: 1px 15px;
+
+      }
+
+      #disk,#memory,#cpu,#language {
+      margin:0px;
+	  padding:0px;
+	  font-size:14px;
+	  color:#FF8F40;
+	  background: #0F1419;
+	  border-radius: 50px 15px 50px 15px;
+	  margin: 5px;
+	  padding: 1px 15px;
+	  }
+	  #power-profiles-daemon {
+	  margin: 0px 13px 0px 0px;
+	  padding:0px;
+	  font-size:14px;
+	  color:#59C2FF;
+	  background: #0F1419;
+	  border-radius: 50px 15px 50px 15px;
+	  margin: 3px;
+	  padding: 1px 15px;
+	  }
+      #custom-notification {
+    	color: #95E6CB;
+		  background: #0F1419;
+		  border-radius: 50px 15px 50px 15px;
+		  margin: 3px;
+		  padding: 1px 15px;
+
+      }
+
+      #idle_inhibitor {
+    	color:#59C2FF;
+		  background: #0F1419;
+		  border-radius: 50px 15px 50px 15px;
+		  margin: 3px;
+		  padding: 1px 15px;
+
+      }
+      #custom-exit {
+    	color: #D2A6FF;
+		  background: #0F1419;
+		  border-radius: 50px 15px 50px 15px;
+		  margin: 3px;
+		  padding: 1px 15px;
+		  opacity:0.8;
+	
+      } 

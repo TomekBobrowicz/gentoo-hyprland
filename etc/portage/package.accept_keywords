@@ -1,50 +1,31 @@
-# Unlock useful packages
-app-shells/zsh-autosuggestions ~amd64
-app-shells/zsh-history-substring-search ~amd64
-app-shells/zsh-autocomplete ~amd64
-app-editors/vscodium ~amd64
-gui-wm/hyprland ~amd64
-gui-apps/waybar ~amd64
+# required by gui-apps/hyprpicker (argument)
+gui-apps/hyprpicker ** 
+# required by gui-wm/hyprland-contrib (argument)
+gui-wm/hyprland-contrib ** 
+gui-apps/hyprlock ** 
+gui-apps/hypridle ** 
+gui-libs/xdg-desktop-portal-hyprland ** 
+gui-apps/hyprsunset ** 
+gui-apps/hyprpaper ** 
+gui-apps/hyprshade ** 
+app-misc/cliphist ** ~amd64
+app-misc/nwg-look ** ~amd64
+gui-apps/nwg-dock-hyprland ~amd64
+x11-apps/xcur2png ~amd64
+gui-apps/rofi-wayland ~amd64
+gui-apps/swaync ~amd64
+x11-themes/bibata-xcursors ~amd64
+gui-apps/wlogout ~amd64
+dev-python/chevron ~amd64
+dev-python/pipx ~amd64
+dev-python/userpath ~amd64
 app-misc/yazi ~amd64
-app-office/joplin-desktop ~amd64
-x11-themes/breezex-xcursors ~amd64
-media-video/wireplumber ~amd64
-media-video/pipewire ~amd64
-app-misc/fastfetch ~amd64
-dev-libs/yyjson ~amd64
-gui-apps/fuzzel ~amd64
-net-wireless/bluez-tools ~amd64
-gui-apps/clipman ~amd64
-app-misc/hourglass ~amd64
-app-shells/zoxide ~amd64
-app-misc/pfetch-rs **
-
-# Hyprland
-media-libs/libdisplay-info ~amd64
-dev-libs/hyprland-protocols ~amd64
-dev-libs/libliftoff ~amd64
-dev-libs/wayland ~amd64
-dev-util/wayland-scanner ~amd64
-dev-libs/date ~amd64
-dev-libs/wayland-protocols ~amd64
-x11-libs/libdrm ~amd64
-dev-cpp/tomlplusplus ~amd64
-gui-libs/hyprcursor ~amd64
-dev-util/hyprwayland-scanner ~amd64
-gui-apps/hyprlock ~amd64
-gui-apps/hypridle ~amd64
-gui-apps/hyprpaper ~amd64
-gui-libs/hyprutils ~amd64
-gui-libs/wlroots ~amd64
-gui-libs/aquamarine ~amd64
-dev-libs/hyprgraphics ~amd64
-gui-apps/hyprsunset ~amd64
-dev-cpp/glaze ~amd64
-# Hyprland needs gcc 14 to build
+x11-themes/adw-gtk3 ~amd64
+sys-power/brightnessctl ~amd64
+gui-wm/hyprland ~amd64 
+gui-libs/aquamarine ** 
+gui-libs/hyprutils ** 
 sys-devel/gcc ~amd64
-# Hyprland XDPH
-gui-libs/xdg-desktop-portal-hyprland ~amd64
-dev-cpp/sdbus-c++ ~amd64
-dev-libs/hyprlang ~amd64
-# BUGGED VERSION downgrade after it catches up
-sys-apps/xdg-desktop-portal ~amd64
+dev-libs/hyprgraphics ~amd64
+dev-libs/wayland-protocols **
+sys-libs/glibc ~amd64

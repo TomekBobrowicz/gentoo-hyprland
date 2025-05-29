@@ -1,4 +1,0 @@
-#!/bin/bash
-# Remove extra whitespace at the end of each line
-
-cat $1 | sed 's/ *$//' > $1-fixed

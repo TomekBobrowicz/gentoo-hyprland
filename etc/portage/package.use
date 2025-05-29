@@ -50,7 +50,7 @@ app-emulation/virt-manager gui
 sys-apps/openrc -netifrc
 
 # HYPRLAND
-gui-wm/hyprland -qtutils
+gui-wm/hyprland -qtutils legacy_renderer
 media-libs/libsdl2 gles2
 >=x11-libs/libdrm-2.4.120 video_cards_radeon
 dev-qt/qtgui egl jpeg
@@ -62,8 +62,12 @@ dev-qt/qttools opengl
 gui-apps/fuzzel png svg
 
 # WAYBAR
-gui-apps/waybar experimental network pipewire wifi -upower
+gui-apps/waybar experimental network pipewire wifi mpd mpris systemd tray -upower 
 x11-libs/gdk-pixbuf jpeg
+# required by gui-apps/waybar-0.11.0-r1::gentoo[tray]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libdbusmenu-16.04.0-r2 gtk3
 
 # seatd as a server
 sys-auth/seatd builtin server -elogind
@@ -89,6 +93,7 @@ x11-themes/arc-theme -gtk2
 # Fonts
 # add emoji & asian lang
 #media-fonts/fonts-meta emoji
+#media-fonts/nerdfonts -X ABI_X86="(64)" 
 
 # do not harden kernel
 #sys-kernel/gentoo-kernel -hardened
@@ -116,6 +121,7 @@ net-libs/nodejs npm -snapshot
 
 # remove support for PAM
 gnome-base/gnome-keyring -pam
+gnome-base/gnome -X
 
 # Thunderbird
 mail-client/thunderbird -X -rust-extensions
@@ -124,3 +130,27 @@ mail-client/thunderbird -X -rust-extensions
 # Install headless, remove AWT crap
 dev-java/openjdk headless-awt
 virtual/jdk headless-awt
+
+# QT
+dev-qt/qtbase X 
+# required by net-libs/webkit-gtk-2.46.5-r600::gentoo[gstreamer]
+# required by www-client/epiphany-46.4::gentoo
+# required by gnome-base/gnome-extra-apps-45.2::gentoo
+# required by gnome-base/gnome-45.2::gentoo[extras]
+# required by gnome-base/gnome (argument)
+>=media-libs/gst-plugins-base-1.24.11 X
+
+# required by gui-apps/swaync-0.11.0::guru
+# required by swaync (argument)
+>=gui-libs/gtk-layer-shell-0.9.1 vala
+
+gui-apps/rofi-wayland windowmode
+
+# required by media-gfx/inkscape-1.4-r2::gentoo[python_single_target_python3_13]
+# required by x11-themes/adapta-gtk-theme-3.95.0.11::gentoo
+# required by x11-themes/adapta-gtk-theme (argument)
+>=dev-python/pillow-11.2.1 webp
+
+# required by net-print/hplip-3.25.2::gentoo[snmp,-minimal]
+# required by net-print/hplip (argument)
+>=net-dns/avahi-0.9_rc2 python

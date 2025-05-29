@@ -1,0 +1,155 @@
+*/* CPU_FLAGS_X86: aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sha sse sse2 sse3 sse4_1 sse4_2 sse4a ssse3
+*/* VIDEO_CARDS: -* amdgpu radeonsi
+*/* INPUT_DEVICES: -* libinput
+# Safe Upgrade to python3_13
+*/* PYTHON_TARGETS: -* python3_13
+*/* PYTHON_SINGLE_TARGET: -* python3_13
+
+# Set PipeWire as default sound server
+media-video/pipewire dbus jack-sdk pipewire-alsa sound-server -X
+media-sound/pulseaudio -daemon
+
+# Disable features
+app-admin/sudo -sendmail -pam
+
+# Enable os-prober
+>=sys-boot/grub-2.06-r4 mount -themes
+
+# Required by firefox
+>=media-libs/libvpx-1.13.1-r1 postproc
+www-client/firefox dbus pgo -X
+
+# Required by pfl
+>=sys-apps/util-linux-2.38.1 caps
+
+# required by libreoffice
+dev-libs/xmlsec nss
+media-libs/harfbuzz icu
+app-office/libreoffice -bluetooth
+media-libs/tiff jpeg
+
+# Required by unar
+# Added PGO
+sys-devel/gcc objc pgo
+>=gnustep-base/gnustep-make-2.8.0-r1 native-exceptions
+
+# For KVM use
+# required for virt-manager to operate; use pipewire instead of pulseaudio
+app-emulation/qemu QEMU_SOFTMMU_TARGETS: aarch64 x86_64 QEMU_USER_TARGETS: x86_64
+app-emulation/qemu usbredir spice virgl opengl -pipewire
+# Recommanded flags for libvirt
+app-emulation/libvirt pcap virt-network numa fuse macvtap vepa qemu policykit
+# Required by libvirt
+>=net-dns/dnsmasq-2.89 script
+>=net-libs/gnutls-3.8.0 pkcs11 tools
+# Required for virt-manager
+>=net-misc/spice-gtk-0.41-r1 usbredir
+app-emulation/virt-manager gui
+
+# Remove netifrc
+sys-apps/openrc -netifrc
+
+# HYPRLAND
+gui-wm/hyprland -qtutils legacy_renderer
+media-libs/libsdl2 gles2
+>=x11-libs/libdrm-2.4.120 video_cards_radeon
+dev-qt/qtgui egl jpeg
+dev-qt/qtbase cups opengl -ice -X
+dev-qt/qttools opengl
+
+# Fuzzel
+# add icon support
+gui-apps/fuzzel png svg
+
+# WAYBAR
+gui-apps/waybar experimental network pipewire wifi mpd mpris systemd tray -upower 
+x11-libs/gdk-pixbuf jpeg
+# required by gui-apps/waybar-0.11.0-r1::gentoo[tray]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libdbusmenu-16.04.0-r2 gtk3
+
+# seatd as a server
+sys-auth/seatd builtin server -elogind
+
+# CLAMAV
+# enable on-access scan
+#app-antivirus/clamav clamonacc
+
+# enable dracut and grub regen
+sys-kernel/installkernel dracut grub
+
+# reqired by networkmanager
+net-misc/networkmanager -bluetooth -wext
+net-wireless/wpa_supplicant dbus
+
+# required by joplin-desktop
+app-text/xmlto text
+app-crypt/gcr gtk
+
+# Remove some options
+x11-themes/arc-theme -gtk2
+
+# Fonts
+# add emoji & asian lang
+#media-fonts/fonts-meta emoji
+#media-fonts/nerdfonts -X ABI_X86="(64)" 
+
+# do not harden kernel
+#sys-kernel/gentoo-kernel -hardened
+
+# Enable Profile Guided Optimization (PGO)
+app-arch/xz-utils pgo
+app-shells/bash pgo
+dev-lang/python pgo
+sys-devel/binutils pgo
+
+# Pipewire instead of pulseaudio
+media-video/mpv pipewire -pulseaudio
+
+# Remove X support for wayland native apps
+app-crypt/pinentry -X
+app-misc/fastfetch -X
+media-libs/gst-plugins-base -X
+net-libs/gtk-vnc -X
+
+# Enable udev rules for adb
+dev-util/android-tools udev
+
+# Enable NPM package manager
+net-libs/nodejs npm -snapshot
+
+# remove support for PAM
+gnome-base/gnome-keyring -pam
+gnome-base/gnome -X
+
+# Thunderbird
+mail-client/thunderbird -X -rust-extensions
+
+# Java
+# Install headless, remove AWT crap
+dev-java/openjdk headless-awt
+virtual/jdk headless-awt
+
+# QT
+dev-qt/qtbase X 
+# required by net-libs/webkit-gtk-2.46.5-r600::gentoo[gstreamer]
+# required by www-client/epiphany-46.4::gentoo
+# required by gnome-base/gnome-extra-apps-45.2::gentoo
+# required by gnome-base/gnome-45.2::gentoo[extras]
+# required by gnome-base/gnome (argument)
+>=media-libs/gst-plugins-base-1.24.11 X
+
+# required by gui-apps/swaync-0.11.0::guru
+# required by swaync (argument)
+>=gui-libs/gtk-layer-shell-0.9.1 vala
+
+gui-apps/rofi-wayland windowmode
+
+# required by media-gfx/inkscape-1.4-r2::gentoo[python_single_target_python3_13]
+# required by x11-themes/adapta-gtk-theme-3.95.0.11::gentoo
+# required by x11-themes/adapta-gtk-theme (argument)
+>=dev-python/pillow-11.2.1 webp
+# required by net-print/hplip-3.25.2::gentoo[snmp,-minimal]
+# required by net-print/hplip (argument)
+>=net-dns/avahi-0.9_rc2 python

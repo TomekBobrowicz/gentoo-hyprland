@@ -1,7 +1,0 @@
-#!/bin/bash
-# Remove space from filename, replace with underscore
-
-for file in * ; do
-		f=`echo $file | tr [:blank:] [_]`
-		[ "$file" = "$f" ] || mv -i -- "$file" "$f"
-done
